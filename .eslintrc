@@ -1,0 +1,37 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "plugin:flowtype/recommended"],
+  "env": {
+    "browser": true,
+    "jest": true,
+    "node": true
+  },
+  "globals": {
+    "SyntheticEvent": true,
+    "SyntheticAnimationEvent": true,
+    "SyntheticClipboardEvent": true,
+    "SyntheticCompositionEvent": true,
+    "SyntheticInputEvent": true,
+    "SyntheticUIEvent": true,
+    "SyntheticFocusEvent": true,
+    "SyntheticKeyboardEvent": true,
+    "SyntheticMouseEvent": true,
+    "SyntheticDragEvent": true,
+    "SyntheticWheelEvent": true,
+    "SyntheticTouchEvent": true,
+    "SyntheticTransitionEvent": true
+  },
+  "plugins": ["react", "jsx-a11y", "import", "flowtype"],
+  "rules": {
+    "react/default-props-match-prop-types": [
+      2,
+      { "allowRequiredDefaults": true }
+    ],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prefer-stateless-function": "warn",
+    "react/require-default-props": [2, { "forbidDefaultForRequired": false }],
+    "jsx-a11y/click-events-have-key-events": "warn",
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "warn"
+  }
+}
