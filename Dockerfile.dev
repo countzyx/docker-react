@@ -7,15 +7,15 @@ RUN apk add --no-cache tini \
   && chown -R node:node /home/node/app \
   && rm -rf /var/cache/apk/*
 
+# Go to app directory and use app user
 WORKDIR /home/node/app
-
-COPY package*.json ./
-
 USER node
 
 # Install some dependencies
+COPY package*.json ./
 RUN npm install
 
+# Copy over app code
 COPY --chown=node:node . .
 
 # Tini is now available at /sbin/tini
