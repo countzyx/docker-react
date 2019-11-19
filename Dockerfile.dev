@@ -1,0 +1,25 @@
+# Specify node alpine as the base image
+FROM node:12-alpine
+
+# Add Tini and setup Node
+RUN apk add --no-cache tini \
+  && mkdir -p /home/node/app/node_modules \
+  && chown -R node:node /home/node/app \
+  && rm -rf /var/cache/apk/*
+
+WORKDIR /home/node/app
+
+COPY package*.json ./
+
+USER node
+
+# Install some dependencies
+RUN npm install
+
+COPY --chown=node:node . .
+
+# Tini is now available at /sbin/tini
+ENTRYPOINT ["/sbin/tini", "--"]
+
+# Default command
+CMD ["npm", "start"]
