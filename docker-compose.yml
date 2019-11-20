@@ -1,18 +1,18 @@
 version: "3.7"
 services:
-  frontend:
+  dev:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: local.Dockerfile
     ports:
       - "3000:3000"
     volumes:
       - /home/node/app/node_modules
       - .:/home/node/app
-  tests:
+  test:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: local.Dockerfile
     environment:
       - CI=true
     volumes:
